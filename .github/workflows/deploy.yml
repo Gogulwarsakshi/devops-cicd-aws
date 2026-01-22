@@ -18,6 +18,7 @@ jobs:
           username: ubuntu
           key: ${{ secrets.EC2_KEY }}
           script: |
+            cd cicd-project/devops-cicd-aws/devops-cicd-aws/devops-cicd-aws
             docker stop app || true
             docker rm app || true
             docker build -t app .
