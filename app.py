@@ -1,4 +1,3 @@
-return "CI/CD Working Perfectly 🚀"
 from flask import Flask
 
 app = Flask(__name__)
