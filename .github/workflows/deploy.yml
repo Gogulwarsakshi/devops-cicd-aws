@@ -18,8 +18,10 @@ jobs:
           username: ubuntu
           key: ${{ secrets.EC2_KEY }}
           script: |
-  cd /home/ubuntu/cicd-project/devops-cicd-aws/devops-cicd-aws/devops-cicd-aws
-  docker stop app || true
-  docker rm app || true
-  docker build -t app .
-  docker run -d -p 80:5000 --name app app
+            rm -rf devops-cicd-aws
+            git clone https://github.com/Gogulwarsakshi/devops-cicd-aws.git
+            cd devops-cicd-aws
+            docker stop app || true
+            docker rm app || true
+            docker build -t app .
+            docker run -d -p 80:5000 --name app app
