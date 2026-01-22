@@ -18,9 +18,15 @@ jobs:
           username: ubuntu
           key: ${{ secrets.EC2_KEY }}
           script: |
+            sudo apt update
+            sudo apt install -y git docker.io
+            sudo systemctl start docker
+            sudo usermod -aG docker ubuntu
+
             rm -rf devops-cicd-aws
             git clone https://github.com/Gogulwarsakshi/devops-cicd-aws.git
             cd devops-cicd-aws
+
             docker stop app || true
             docker rm app || true
             docker build -t app .
